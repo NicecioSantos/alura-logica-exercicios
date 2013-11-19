@@ -1,0 +1,34 @@
+<canvas id="tela" width="600" height="400"></canvas>
+
+<script>
+var tela = document.getElementById("tela");
+var pincel = tela.getContext("2d");
+
+var circulo = function(x, y, raio){
+	pincel.strokeStyle = "blue";
+	pincel.beginPath();
+	pincel.arc(x, y, raio, 0, 2 * Math.PI);
+	pincel.stroke();
+}
+
+var imagem = new Image();
+imagem.src = "http://www.caelum.com.br/imagens/instrutores/fotos/paulo-silveira-90.jpg";
+
+var desenharImagem = function(x, y){
+	pincel.drawImage(imagem, x, y);
+}
+
+var limparTela = function(){
+	pincel.clearRect(0, 0, 600, 400);
+}
+
+var x = 1;
+var animacao = function(){
+	//limparTela();
+	circulo(x, 100, x * 2);
+	//desenharImagem(x, 100);
+	x++;
+}
+
+setInterval(animacao, 30);
+</script>

@@ -1,0 +1,28 @@
+<canvas id="tela" width="600" height="400"></canvas>
+
+<script>
+
+var tela = document.getElementById("tela");
+var pincel = tela.getContext("2d");
+
+var desenharQuadrado = function(x, y, cor){	
+	pincel.fillStyle = cor;
+	pincel.fillRect(x, y, 50, 50);
+	
+	pincel.strokeStyle = "#000";
+	pincel.strokeRect(x, y, 50, 50);	
+}
+
+var desenharBola = function(x){	
+	pincel.fillStyle = "blue";
+	pincel.beginPath();
+	pincel.arc(x, 100, 25, 0, 2*Math.PI);
+	pincel.fill();
+}
+
+for(var x = 0; x < 600; x = x + 50){
+	desenharQuadrado(x, 0, "green");
+	desenharQuadrado(x, 50, "red");
+	desenharBola(x);
+}
+</script>

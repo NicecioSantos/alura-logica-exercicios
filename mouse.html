@@ -1,0 +1,33 @@
+<canvas id="tela" width="600" height="400"></canvas>
+
+<script>
+var tela = document.getElementById("tela");
+var pincel = tela.getContext("2d");
+
+pincel.fillStyle = "gray";
+pincel.fillRect(0, 0, 600, 400);
+
+var alvo = function(evento){
+	var x = evento.pageX - tela.offsetLeft;
+	var y = evento.pageY - tela.offsetTop;
+	
+	/*
+	Botão Esquerdo = 0
+	Botão do Meio = 1
+	Botão Direito = 2
+	*/
+	if(evento.button == 0)
+		pincel.fillStyle = "blue";
+	else if(evento.button == 1)
+	    pincel.fillStyle = "red";
+		
+	pincel.beginPath();
+	pincel.arc(x, y, 10, 0, 2 * Math.PI);
+	pincel.fill();
+	
+	console.log("Coordenada(x, y) = [" + x + ", " + y + "]");
+}
+
+tela.onclick = alvo;
+
+</script>
